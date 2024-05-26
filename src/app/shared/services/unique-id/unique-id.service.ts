@@ -5,11 +5,13 @@ import { v4 as uuidv4 } from 'uuid';
 export class UniqueIdService {
   private numOfGeneratedIds = 0;
 
+  private validIdRegex = /^[A-Za-z]+[\w\-\:\.]*$/;
+
   public generateUniqueIdWithPrefix(prefix: string): string {
-    if (!prefix) {
-      throw Error(`Prefix can not be empty`);
+    if (!prefix || !this.validIdRegex.test(prefix)) {
+      throw Error(`Prefix can not be empty or init with number`);
     }
-    
+
     const uniqueId = this.generateUniqueId();
     this.numOfGeneratedIds++;
     return `${prefix}-${uniqueId}`;
