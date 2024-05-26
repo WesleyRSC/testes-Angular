@@ -31,11 +31,13 @@ describe(UniqueIdService.name, () => {
   });
 
   it(`#${UniqueIdService.prototype.generateUniqueIdWithPrefix.name}
-  should throw error when called with empty param`, () => {
+    should throw error when called with empty or number param`, () => {
     const emptyValues = [null, undefined, '', '1', '0'];
 
     emptyValues.forEach((emptyValue) => {
-      expect(() => service.generateUniqueIdWithPrefix(emptyValue)).toThrow();
+      expect(() => service.generateUniqueIdWithPrefix(emptyValue))
+        .withContext(`Value is: ${emptyValue}`)
+        .toThrow();
     });
 
     // These two approachs are valid
