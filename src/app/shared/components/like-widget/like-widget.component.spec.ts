@@ -8,15 +8,31 @@ describe(LikeWidgetComponent.name, () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports:[LikeWidgetModule]
+      imports: [LikeWidgetModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LikeWidgetComponent);
   });
 
   it('Should create component', () => {
-    const instance = fixture.componentInstance;
+    const component = fixture.componentInstance;
 
-    expect(instance).toBeTruthy();
+    expect(component).toBeTruthy();
+  });
+
+  it('Should auto generate ID when id input property is missing', () => {
+    const component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    expect(component.id).toBeTruthy();
+  });
+
+  it('Should NOT generate ID when id input property is present', () => {
+    const component = fixture.componentInstance;
+    const someId = 'someId';
+    component.id = someId;
+    fixture.detectChanges();
+
+    expect(component.id).toBe(someId);
   });
 });
