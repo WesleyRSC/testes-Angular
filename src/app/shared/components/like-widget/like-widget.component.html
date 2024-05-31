@@ -1,9 +1,15 @@
-<div class="like-widget-container" (click)="like()">
-  <div class="icon">
-    <img src="../../../../assets/thumb-up.png" alt="">
+<div class="like-widget-container" (keyup.enter)="like()" (click)="like()">
+  <div class="icon" role="button" tabindex="0" [attr.aria-describe]="id">
+    <img src="../../../../assets/thumb-up.png" />
   </div>
-  
-  <span class="like-counter">
+
+  <span
+    class="like-counter"
+    [attr.id]="id"
+    [attr.aria-label]="likes + ': people liked'"
+    aria-live="true"
+    aria-atomic="true"
+  >
     {{ likes }}
   </span>
 </div>
