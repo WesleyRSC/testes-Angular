@@ -1,0 +1,14 @@
+.like-widget-container{
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  img{
+    height: 100%;
+    width: 100%;
+  }
+}

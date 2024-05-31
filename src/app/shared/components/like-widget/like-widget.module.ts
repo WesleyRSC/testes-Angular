@@ -6,6 +6,7 @@ import { UniqueIdService } from '../../services/unique-id/unique-id.service';
 @NgModule({
   imports: [CommonModule],
   declarations: [LikeWidgetComponent],
+  exports: [LikeWidgetComponent],
   providers: [UniqueIdService],
 })
 export class LikeWidgetModule {}
